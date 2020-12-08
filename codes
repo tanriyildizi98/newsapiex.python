@@ -1,0 +1,101 @@
+!pip install newsapi-python   #firs you have to install newsapi-python to work with api . If you download your notebook from Anaconda you can use the same pip, but ıf you dont use Anacaonda you can ignore ! and you can write the others.
+
+from newsapi import NewsApiClient
+import datetime as dt
+import pandas as pd
+import matplotlib.pyplot as plt 
+
+#instead of my_api you will write your api key which you get from the https://newsapi.org/ 
+newsapi = NewsApiClient(api_key='my_api') # Init
+
+data=newsapi.get_everything(q='earthquake & magnitude',language='en',sort_by='relevancy',page_size=100) #you can change all variables which is q,language,sort_by and page size . But page size have to be maksimum 100 , because the app have limits.
+data1=newsapi.get_everything(q='Covid-19 deaths',language='en',sort_by='relevancy',page_size=100)
+data2=newsapi.get_everything(q='American elections 2020',language='en',sort_by='relevancy',page_size=100)
+#as you see we looked at 3 different news with changing the variables.
+
+#there, we are looking our data type.
+type(data)
+type(data1) 
+type(data2)
+
+#looking the keys . what we have
+data.keys()
+data1.keys()
+data2.keys()
+
+data['status']
+data1['status']
+data2['status']
+
+#we are looking how many data we have for each parameter
+data['totalResults']
+data1['totalResults']
+data2['totalResults']
+
+#see what type of articles you have
+type(data['articles'])
+type(data1['articles'])
+type(data2['articles'])
+
+#We are looking first articles with all paramters like source, author,puslished daye etc.  Instead of 0 you can the number between 0-100.
+data['articles'][0]
+data1['articles'][0]
+data2['articles'][0]
+
+#creating variables for the for loop and in this for loop you will see 100 articles with Title and Sources
+articles=data['articles']
+articles1=data1['articles']
+articles2=data2['articles']
+
+for x,y in enumerate (articles):
+    print (f'{x} {y["title"]}')
+    
+ for x,y in enumerate (articles1):
+    print (f'{x} {y["title"]}')
+    
+    for x,y in enumerate (articles2):
+    print (f'{x} {y["title"]}')
+    
+    
+    #If you want to more specifics details about the new which you choose one of them and interest, you can apply this code with changing the number which is in the [ ]
+    #We looked 3 specifics new. If you want you can check only one it is your choose
+    for key, value in articles[0].items():
+      print (f"\n{key.ljust(15)} {value}")
+    for key, value in article1s[0].items():
+      print (f"\n{key.ljust(15)} {value}")
+    for key, value in articles2[0].items():
+      print (f"\n{key.ljust(15)} {value}")
+    
+    #It is doing the table all of the datas and you can see your all datas more clear. We applied this for all of our topics.
+    df=pd.DataFrame(articles)
+    df
+    
+    df1=pd.DataFrame(articles1)
+    df1
+    
+    df3=pd.DataFrame(articles2)
+    df3
+    
+    # it is counting the numbers for source. One source has how many articles.
+    df.source.value_counts()
+    df1.source.value_counts()
+    df3.source.value_counts()
+    
+    #For plotting. I used figsize because I have too many sources names and ıt was not looking clear and I used this comment to see the names more clear
+    df.source.value_counts().plot(figsize=(16,8) , kind='bar')
+    df1.source.value_counts().plot(figsize=(16,8) , kind='bar')
+    df3.source.value_counts().plot(figsize=(16,8) , kind='bar')
+    
+    
+    #And we looked the authors . Sometimes one author can have more than one articles and we wanted to see this for our each news.
+    df.author.value_counts()
+    df1.author.value_counts()
+    df2.author.value_counts()
+      
+      
+#and same we plot them
+df.author.value_counts().plot(figsize=(16,8),kind='bar')
+df1.author.value_counts().plot(figsize=(16,8),kind='bar')
+df3.author.value_counts().plot(figsize=(16,8),kind='bar')
+
+
