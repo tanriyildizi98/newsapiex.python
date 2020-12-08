@@ -13,7 +13,7 @@ data1=newsapi.get_everything(q='Covid-19 deaths',language='en',sort_by='relevanc
 data2=newsapi.get_everything(q='American elections 2020',language='en',sort_by='relevancy',page_size=100)
 #as you see we looked at 3 different news with changing the variables.
 
-#there, we are looking our data type.
+#here, we are looking our data type.
 type(data)
 type(data1) 
 type(data2)
@@ -53,14 +53,14 @@ for x,y in enumerate (articles):
  for x,y in enumerate (articles1):
     print (f'{x} {y["title"]}')
     
-    for x,y in enumerate (articles2):
-    print (f'{x} {y["title"]}')
+    for x,y in enumerate (articles2):    #If you need both element and index, use enumerate.
+          print (f'{x} {y["title"]}')
     
     
 #If you want to more specifics details about the new which you choose one of them and interest, you can apply this code with changing the number which is in the [ ]
 #We looked 3 specifics new. If you want you can check only one it is your choose
     for key, value in articles[0].items():
-      print (f"\n{key.ljust(15)} {value}")
+      print (f"\n{key.ljust(15)} {value}")  #ljust() returns the string left justified in a string of length width.
     for key, value in article1s[0].items():
       print (f"\n{key.ljust(15)} {value}")
     for key, value in articles2[0].items():
