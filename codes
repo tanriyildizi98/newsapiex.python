@@ -57,8 +57,8 @@ for x,y in enumerate (articles):
     print (f'{x} {y["title"]}')
     
     
-    #If you want to more specifics details about the new which you choose one of them and interest, you can apply this code with changing the number which is in the [ ]
-    #We looked 3 specifics new. If you want you can check only one it is your choose
+#If you want to more specifics details about the new which you choose one of them and interest, you can apply this code with changing the number which is in the [ ]
+#We looked 3 specifics new. If you want you can check only one it is your choose
     for key, value in articles[0].items():
       print (f"\n{key.ljust(15)} {value}")
     for key, value in article1s[0].items():
@@ -66,7 +66,7 @@ for x,y in enumerate (articles):
     for key, value in articles2[0].items():
       print (f"\n{key.ljust(15)} {value}")
     
-    #It is doing the table all of the datas and you can see your all datas more clear. We applied this for all of our topics.
+  #It is doing the table all of the datas and you can see your all datas more clear. We applied this for all of our topics.
     df=pd.DataFrame(articles)
     df
     
@@ -90,7 +90,7 @@ for x,y in enumerate (articles):
     #And we looked the authors . Sometimes one author can have more than one articles and we wanted to see this for our each news.
     df.author.value_counts()
     df1.author.value_counts()
-    df2.author.value_counts()
+    df3.author.value_counts()
       
       
 #and same we plot them
