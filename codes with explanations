@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 #instead of my_api you will write your api key which you get from the https://newsapi.org/ 
 newsapi = NewsApiClient(api_key='my_api') 
 
-data=newsapi.get_everything(q='earthquake & magnitude',language='en',sort_by='relevancy',page_size=100) #you can change all variables which is q,language,sort_by and page size . But page size have to be maksimum 100 , because the app have limit.
+data=newsapi.get_everything(q='earthquake & magnitude',language='en',sort_by='relevancy',page_size=100) #you can change all variables which is q,language,sort_by and page size . But the page size has to be maksimum 100 , because the app has limit.
 data1=newsapi.get_everything(q='Covid-19 deaths',language='en',sort_by='relevancy',page_size=100)
 data2=newsapi.get_everything(q='American elections 2020',language='en',sort_by='relevancy',page_size=100)
 #as you see we looked at 3 different news with changing the variables.
@@ -37,12 +37,12 @@ type(data['articles'])
 type(data1['articles'])
 type(data2['articles'])
 
-#We are looking first(because we put 0 into the square bracket) articles with all paramters like source, author,puslished daye etc.  Instead of 0 you can the number between 0-100.
+#We are looking first(because we put 0 into the square bracket) articles with all parameters like source, author,puslished day etc.  Instead of 0 you can write the number between 0-100.
 data['articles'][0]
 data1['articles'][0]
 data2['articles'][0]
 
-#creating variables for the for loop and in this for loop you will see 100 articles with Title and Sources.
+#for creating variables,loop will execute 100 articles,sources and titles etc.
 articles=data['articles']
 articles1=data1['articles']
 articles2=data2['articles']
@@ -76,7 +76,7 @@ for x,y in enumerate (articles):
     df3=pd.DataFrame(articles2)
     df3
     
-    # it is counting the numbers for source. One source has how many articles.
+    # it is counting the numbers for source. One source can have many articles.
     df.source.value_counts()
     df1.source.value_counts()
     df3.source.value_counts()
