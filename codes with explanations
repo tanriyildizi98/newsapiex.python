@@ -1,4 +1,4 @@
-!pip install newsapi-python   #firs you have to install newsapi-python to work with api . If you download your notebook from Anaconda you can use the same pip, but ıf you dont use Anacaonda you can ignore ! and you can write the others.
+!pip install newsapi-python   #first you have to install newsapi-python to work with api . If you download your notebook from Anaconda you can use the same pip, but ıf you dont use Anacaonda you can ignore '!' and you can write the others.
 
 from newsapi import NewsApiClient
 import datetime as dt
@@ -6,9 +6,9 @@ import pandas as pd
 import matplotlib.pyplot as plt 
 
 #instead of my_api you will write your api key which you get from the https://newsapi.org/ 
-newsapi = NewsApiClient(api_key='my_api') # Init
+newsapi = NewsApiClient(api_key='my_api') 
 
-data=newsapi.get_everything(q='earthquake & magnitude',language='en',sort_by='relevancy',page_size=100) #you can change all variables which is q,language,sort_by and page size . But page size have to be maksimum 100 , because the app have limits.
+data=newsapi.get_everything(q='earthquake & magnitude',language='en',sort_by='relevancy',page_size=100) #you can change all variables which is q,language,sort_by and page size . But page size have to be maksimum 100 , because the app have limit.
 data1=newsapi.get_everything(q='Covid-19 deaths',language='en',sort_by='relevancy',page_size=100)
 data2=newsapi.get_everything(q='American elections 2020',language='en',sort_by='relevancy',page_size=100)
 #as you see we looked at 3 different news with changing the variables.
@@ -18,7 +18,7 @@ type(data)
 type(data1) 
 type(data2)
 
-#looking the keys . what we have
+#looking the keys . what we have.
 data.keys()
 data1.keys()
 data2.keys()
@@ -27,22 +27,22 @@ data['status']
 data1['status']
 data2['status']
 
-#we are looking how many data we have for each parameter
+#we are looking how many data we have for each parameter.
 data['totalResults']
 data1['totalResults']
 data2['totalResults']
 
-#see what type of articles you have
+#see, what type of articles you have.
 type(data['articles'])
 type(data1['articles'])
 type(data2['articles'])
 
-#We are looking first articles with all paramters like source, author,puslished daye etc.  Instead of 0 you can the number between 0-100.
+#We are looking first(because we put 0 into the square bracket) articles with all paramters like source, author,puslished daye etc.  Instead of 0 you can the number between 0-100.
 data['articles'][0]
 data1['articles'][0]
 data2['articles'][0]
 
-#creating variables for the for loop and in this for loop you will see 100 articles with Title and Sources
+#creating variables for the for loop and in this for loop you will see 100 articles with Title and Sources.
 articles=data['articles']
 articles1=data1['articles']
 articles2=data2['articles']
@@ -57,8 +57,8 @@ for x,y in enumerate (articles):
           print (f'{x} {y["title"]}')
     
     
-#If you want to more specifics details about the new which you choose one of them and interest, you can apply this code with changing the number which is in the [ ]
-#We looked 3 specifics new. If you want you can check only one it is your choose
+#If you want to more specifics details about the news which you choose one of them and interest, you can apply this code with changing the number which is in the '[ ]'.
+#We looked 3 specifics new. If you want you can check only for one .
     for key, value in articles[0].items():
       print (f"\n{key.ljust(15)} {value}")  #ljust() returns the string left justified in a string of length width.
     for key, value in article1s[0].items():
@@ -66,7 +66,7 @@ for x,y in enumerate (articles):
     for key, value in articles2[0].items():
       print (f"\n{key.ljust(15)} {value}")
     
-  #It is doing the table all of the datas and you can see your all datas more clear. We applied this for all of our topics.
+  #It is doing the table for all of the datas and you can see your all datas more clear. We applied this for all of our topics.
     df=pd.DataFrame(articles)
     df
     
